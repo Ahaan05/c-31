@@ -1,3 +1,16 @@
+//  examples of array
+
+
+
+var arr3 = [[1,2],[2,3],[3,4]]
+console.log(arr3);
+
+arr3.push("my name");
+console.log(arr3);
+arr3.pop();
+console.log(arr3);
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +20,8 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gameState="onSling";
+
 
 
 function preload() {
@@ -69,16 +84,19 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gameState==="launched"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+}
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState="launched";q
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        // slingshot.attach(bird.body);
     }
 }
